@@ -156,3 +156,5 @@ Resultado:
 ```
 
 No exemplo acima, os dois campos hero teriam entrado em conflito, mas como podemos alia-los a nomes diferentes, podemos obter os dois resultados em uma solicitação.
+
+### Fragments
