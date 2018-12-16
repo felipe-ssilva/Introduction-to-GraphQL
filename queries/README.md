@@ -38,7 +38,7 @@ No exemplo anterior, apenas pedimos o nome de nosso herói que retornou uma Stri
 {
     hero {
         name
-        # Queries can have comments!
+        # Consultar podem ter comentários!
         friends {
             name
         }
@@ -68,3 +68,61 @@ Resultado:
     }
 }
 ```
+
+Observe que neste exemplo, o campo *friends* retorna uma matriz de itens. As consultas do GraphQL parecem as mesmas para itens únicos ou listas de itens, no entanto, sabemos qual deles é esperado com base no que é indicado no schema.
+
+### Arguments
+
+Se a única coisa que poderíamos fazer era atravessar objetos e seus campos, o GraphQL já seria uma linguagem muito útil para a busca de dados. Mas quando você adiciona a capacidade de passar argumentos para campos, as coisas ficam muito mais interessantes.
+
+```javascript
+{
+    human(id: "1000") {
+        name
+        height
+    }
+}
+```
+
+Resultado:
+
+```javascript
+{
+    "data": {
+        "human": {
+            "name": "Luke Skywalker",
+            "height": 1.72
+        }
+    }
+}
+```
+
+Em um sistema como o REST, você só pode passar um único conjunto de argumentos - os parâmetros de consulta e os segmentos de URL em sua solicitação. Mas no GraphQL, cada campo e objeto aninhado pode obter seu próprio conjunto de argumentos, tornando o GraphQL um substituto completo para fazer várias buscas de API. Você pode até mesmo passar argumentos para campos escalares, para implementar transformações de dados uma vez no servidor, em vez de em cada cliente separadamente.
+
+```javascript
+{
+    human(id: "1000") {
+        name
+        height(unit: FOOT)
+    }
+}
+```
+
+Resultado:
+
+```javascript
+{
+    "data": {
+        "human": {
+            "name": "Luke Skywalker",
+            "height": 5.6430448
+        }
+    }
+}
+```
+
+Argumentos podem ser de muitos tipos diferentes. No exemplo acima, usamos um tipo Enumeration, que representa um de um conjunto finito de opções (neste caso, unidades de comprimento, METER ou FOOT). O GraphQL vem com um conjunto padrão de tipos, mas um servidor GraphQL também pode declarar seus próprios tipos personalizados, desde que eles possam ser serializados em seu formato de transporte.
+
+[Leia mais sobre o sistema de tipos GraphQL aqui.](schema)
+
+### Aliases
