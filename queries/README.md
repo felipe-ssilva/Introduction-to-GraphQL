@@ -126,3 +126,33 @@ Argumentos podem ser de muitos tipos diferentes. No exemplo acima, usamos um tip
 [Leia mais sobre o sistema de tipos GraphQL aqui.](schema)
 
 ### Aliases
+
+Se você tiver um olhar mais aguçado, você deve ter notado que, como os campos do objeto de resultado correspondem ao nome do campo na consulta, mas não incluem argumentos, não é possível consultar diretamente o mesmo campo com argumentos diferentes. É por isso que você precisa de aliases - eles permitem renomear o resultado de um campo para qualquer coisa que você queira.
+
+```javascript
+{
+    empireHero: hero(episode: EMPIRE) {
+        name
+    }
+    jediHero: hero(episode: JEDI) {
+        name
+    }
+}
+```
+
+Resultado:
+
+```javascript
+{
+    "data": {
+        "empireHero": {
+            "name": "Luke Skywalker"
+        },
+        "jediHero": {
+            "name": "R2-D2"
+        }
+    }
+}
+```
+
+No exemplo acima, os dois campos hero teriam entrado em conflito, mas como podemos alia-los a nomes diferentes, podemos obter os dois resultados em uma solicitação.
