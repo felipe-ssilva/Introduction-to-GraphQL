@@ -123,7 +123,7 @@ Resultado:
 
 Argumentos podem ser de muitos tipos diferentes. No exemplo acima, usamos um tipo Enumeration, que representa um de um conjunto finito de opções (neste caso, unidades de comprimento, METER ou FOOT). O GraphQL vem com um conjunto padrão de tipos, mas um servidor GraphQL também pode declarar seus próprios tipos personalizados, desde que eles possam ser serializados em seu formato de transporte.
 
-[Leia mais sobre o sistema de tipos GraphQL aqui.](schema)
+[Leia mais sobre o sistema de tipos GraphQL aqui.](../schema)
 
 ### Aliases
 
