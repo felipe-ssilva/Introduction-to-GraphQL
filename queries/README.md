@@ -38,7 +38,7 @@ No exemplo anterior, apenas pedimos o nome de nosso herói que retornou uma Stri
 {
     hero {
         name
-        # Consultar podem ter comentários!
+        # Consultas podem ter comentários!
         friends {
             name
         }
